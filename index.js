@@ -125,6 +125,64 @@ const addEmployee = () => {
         }
       }
     },
-
+    {
+      type:'input',
+      name:'GitHub',
+      message:"What is the engineer's GitHub username?",
+      when: (input) => input.role === "Engineer",
+      validate: gitHubInput => {
+        if (gitHubInput) {
+            return true;
+        } else {
+            console.log("Please enter the engineer's GitHub username!");
+            return false;
+        }
+      }
+    }
+    {
+      type: 'input',
+      name: 'school',
+      message: "What is the intern's school?",
+      when: (input) => input.role === "Intern",
+      validate: nameInput => {
+        if (schoolInput) {
+            return true;
+        } else {
+            console.log("Please enter the intern's school!");
+            return false;
+        }
+      }
+    },
+    {
+      type: 'confirm',
+      name: 'confirmAddEmployee',
+      message: 'Would you like to add a new employee?',
+      default: false
+    }
   ])
+  .then(teamData => {
+    if (teamData.role === "Engineer") {
+      const { name, id, email, github} = teamData;
+      const engineer = new Engineer (name, id, email, github);
+
+      employees.push(engineer);
+      console.log(engineer);
+    } else {
+      const { name, id, email, school } = teamData;
+      const intern = new Intern (name, id, email, school);
+
+      employees.push(intern);
+      console.log(intern);
+    }
+
+    if (teamData.confirmAddEmployee) {
+        return addEmployee(employees);
+    } else {
+        return employees;
+    }
+  
+    })
 }; //end of addEmployee function
+
+createManager()
+    .then(addEmployee)
