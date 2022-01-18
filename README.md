@@ -1,7 +1,7 @@
 # Team-Profile-Generator
 
 ## Visual Test
-![Team Profile Generator Demo] 
+![Team Profile Generator Demo](https://github.com/IanAdamPrice/Team-Profile-Generator/blob/main/assets/Team-Profile-Generator.gif?raw=true)
 ## Description
 This application uses a command line interface that takes user input and builds a team with a manager and an option to add either an engineer or an intern. The data is then generated as cards and written to index.html.
 
