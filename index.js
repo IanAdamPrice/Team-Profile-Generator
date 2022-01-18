@@ -128,11 +128,11 @@ const addEmployee = () => {
     },
     {
       type:'input',
-      name:'GitHub',
+      name:'github',
       message:"What is the engineer's GitHub username?",
       when: (input) => input.role === "Engineer",
-      validate: gitHubInput => {
-        if (gitHubInput) {
+      validate: githubInput => {
+        if (githubInput) {
             return true;
         } else {
             console.log("Please enter the engineer's GitHub username!");
@@ -145,7 +145,7 @@ const addEmployee = () => {
       name: 'school',
       message: "What is the intern's school?",
       when: (input) => input.role === "Intern",
-      validate: nameInput => {
+      validate: schoolInput => {
         if (schoolInput) {
             return true;
         } else {
@@ -168,7 +168,7 @@ const addEmployee = () => {
     if (role === "Engineer") {
         employee = new Engineer (name, id, email, github);
         console.log(employee);
-    } else {
+    } else if (role === "Intern") {
         employee = new Intern (name, id, email, school);
 
         console.log(employee);
@@ -203,6 +203,5 @@ createManager()
         return writeFile(pageHTML);
     })
     .catch(err => {
-        const employeeArr = generateHTML(err);
-        writeFile(teamArr);
+        console.log(err);
     });
