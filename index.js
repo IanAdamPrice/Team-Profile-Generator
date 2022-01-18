@@ -69,7 +69,7 @@ const createManager = () => {
 
     employees.push(manager);
 
-    console.log(manager)
+    //console.log(manager)
   })
 }; //end of addManager function
 
@@ -167,11 +167,11 @@ const addEmployee = () => {
 
     if (role === "Engineer") {
         employee = new Engineer (name, id, email, github);
-        console.log(employee);
+        //console.log(employee);
     } else if (role === "Intern") {
         employee = new Intern (name, id, email, school);
 
-        console.log(employee);
+        //console.log(employee);
     }
     employees.push(employee);
 

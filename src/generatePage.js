@@ -4,7 +4,7 @@ createManager = function (manager) {
         <div class="card h-100">
             <div class="card-header bg-primary text-light">
                 <h3>${manager.name}</h3>
-                <h4><i class="material-icons">free_breakfast</i>Manager</h4>
+                <h4><i class="material-icons">free_breakfast</i> Manager</h4>
             </div>
             <div class="card-body bg-light text-dark">
                 <p class="id bg-white p-2 border rounded m-0">ID: ${manager.id}</p>
@@ -22,12 +22,12 @@ createEngineer = function (engineer) {
         <div class="card h-100">
             <div class="card-header bg-primary text-light">
                 <h3>${engineer.name}</h3>
-                <h4><i class="material-icons">work</i>Engineer</h4>
+                <h4><i class="material-icons">work</i> Engineer</h4>
             </div>
             <div class="card-body bg-light text-dark">
                 <p class="id bg-white p-2 border rounded m-0">ID: ${engineer.id}</p>
                 <p class="email bg-white p-2 border rounded m-0">Email: <a href="mailto:${engineer.email}">${engineer.email}</a></p>
-                <p class="github bg-white p-2 border rounded m-0">GitHub:<a href="https://github.com/${engineer.github}">${engineer.github}</a></p>
+                <p class="github bg-white p-2 border rounded m-0">GitHub: <a href="https://github.com/${engineer.github}">${engineer.github}</a></p>
             </div>
         </div>
     </div>
@@ -40,7 +40,7 @@ createIntern = function (intern) {
         <div class="card h-100">
             <div class="card-header bg-primary text-light">
                 <h3>${intern.name}</h3>
-                <h4><i class="material-icons">weekend</i>Intern</h4>
+                <h4><i class="material-icons">weekend</i> Intern</h4>
             </div>
 
             <div class="card-body bg-light text-dark">
