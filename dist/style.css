@@ -2,15 +2,13 @@
     box-sizing: border-box;
 }
 :root {
-    --primary: salmon;
-    --secondary: white;
+    --primary: white;
 }
+
 body {
     font-family: Arial, Helvetica, sans-serif;
 }
 #navbar {
-    background-color: var(--primary);
-    color: var(--secondary);
     font-size: 50px;
 }
 .navbar-brand {
@@ -18,9 +16,7 @@ body {
 }
 
 
-.card-header{
-    background-color: var(--primary);
-}
+
 
 .card-body {
     background-color: var(--secondary);
