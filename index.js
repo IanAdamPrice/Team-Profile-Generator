@@ -6,6 +6,7 @@ const inquirer = require('inquirer');
 
 const employees = [];
 const generatePage = require('./src/generatePage');
+const { generate } = require('rxjs');
 
 const createManager = () => {
   return inquirer.prompt ([
@@ -138,7 +139,7 @@ const addEmployee = () => {
             return false;
         }
       }
-    }
+    },
     {
       type: 'input',
       name: 'school',
@@ -160,29 +161,48 @@ const addEmployee = () => {
       default: false
     }
   ])
-  .then(teamData => {
-    if (teamData.role === "Engineer") {
-      const { name, id, email, github} = teamData;
-      const engineer = new Engineer (name, id, email, github);
+  .then(employeeData => {
+    let { name, id, email, role, github, school, confirmAddEmployee } = employeeData;
+    let employee;
 
-      employees.push(engineer);
-      console.log(engineer);
+    if (role === "Engineer") {
+        employee = new Engineer (name, id, email, github);
+        console.log(employee);
     } else {
-      const { name, id, email, school } = teamData;
-      const intern = new Intern (name, id, email, school);
+        employee = new Intern (name, id, email, school);
 
-      employees.push(intern);
-      console.log(intern);
+        console.log(employee);
     }
+    employees.push(employee);
 
-    if (teamData.confirmAddEmployee) {
+    if (confirmAddEmployee) {
         return addEmployee(employees);
     } else {
         return employees;
     }
-  
     })
 }; //end of addEmployee function
 
+const writeFile = data => {
+    fs.writeFile('./dist/index.html', data, err => {
+        if (err) {
+            console.log(err);
+            return;
+        } else {
+            console.log("Your index.html has been updated!");
+        }
+    })
+};
+
 createManager()
     .then(addEmployee)
+    .then(employees => {
+        return generateHTML(employees);
+    })
+    .then(pageHTML => {
+        return writeFile(pageHTML);
+    })
+    .catch(err => {
+        const employeeArr = generateHTML(err);
+        writeFile(teamArr);
+    });
